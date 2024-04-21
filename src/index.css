@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body, html {
+  @apply bg-gray-100 text-gray-900 font-mono;
+  text-rendering: optimizeSpeed;
+}
