@@ -6,13 +6,17 @@ export interface ITypewriterContext {
   setKeySound: (keySound: TKeySound) => void;
   content: string;
   setContent: (content: string) => void;
+  isTypearea: boolean;
+  setIsTypearea: (state: boolean) => void;
 }
 
 export const INITIAL_TYPEWRITER_STATE: ITypewriterContext = {
   keySound: "subtle",
   setKeySound: () => { },
   content: '',
-  setContent: () => { }
+  setContent: () => { },
+  isTypearea: true,
+  setIsTypearea: () => { }
 }
 
 export const TypewriterContext = createContext<ITypewriterContext>({

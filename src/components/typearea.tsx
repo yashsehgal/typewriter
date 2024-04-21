@@ -1,5 +1,6 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext } from "react";
 import { TKeySound, TypewriterContext } from "../contexts/typewriter-context";
+import { motion } from 'framer-motion';
 
 const KeySoundPath: Record<TKeySound, string> = {
   "hard": "/sounds/key-hard.wav",
@@ -7,7 +8,7 @@ const KeySoundPath: Record<TKeySound, string> = {
 }
 
 export default function Typearea() {
-  const { keySound, content, setContent } = useContext(TypewriterContext);
+  const { keySound, content, setContent, isTypearea } = useContext(TypewriterContext);
   const playTypeSound = () => {
     const soundPath: string = KeySoundPath[keySound];
     const audio = new Audio(soundPath);
@@ -24,12 +25,20 @@ export default function Typearea() {
   };
 
   return <div className="typeArea-textarea-wrapper">
-    <textarea
+    {isTypearea && <motion.textarea
+      initial={{
+        opacity: 0 as number,
+        y: 120 as number
+      }}
+      animate={{
+        opacity: 1 as number,
+        y: 0 as number
+      }}
       className="outline-none focus:outline-none text-lg font-medium bg-transparent w-full h-full resize-none"
       placeholder="Start typing your thoughts..."
       autoFocus
       onChange={autoResize}
       value={content}
-    />
+    />}
   </div>
 }

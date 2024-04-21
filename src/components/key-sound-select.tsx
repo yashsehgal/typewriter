@@ -28,7 +28,7 @@ function KeySoundOption({ className, selected = false, ...args }: React.ButtonHT
 }
 
 function TypewriterReset() {
-  const { content, setContent } = useContext(TypewriterContext);
+  const { content, setContent, setIsTypearea } = useContext(TypewriterContext);
   return <button className="text-xs px-4 py-2 rounded-md shadow-sm text-white bg-gray-800 hover:scale-95 transition-all active:scale-90 disabled:hover:scale-100 disabled:active:scale-100 disabled:cursor-not-allowed disabled:opacity-30"
     onClick={(e) => {
       e.preventDefault();
@@ -36,6 +36,10 @@ function TypewriterReset() {
       resetAudio.volume = 0.4;
       resetAudio.play();
       setContent(INITIAL_TYPEWRITER_STATE.content);
+      setIsTypearea(false);
+      setTimeout(() => {
+        setIsTypearea(true);
+      }, 100);
     }}
     disabled={!content}
   >{"Clear"}</button>
