@@ -1,5 +1,18 @@
 import { createContext } from "react";
 
+const WELCOME_CONTENT: string = `-----------------------------------------------
+A fun typewriter project
+Used React, Typescript & Tailwind - v0.1
+-----------------------------------------------
+
+I built this as a fun project. I will be adding
+more subtle features and improvements.
+
+Turn on your volume while typing :)
+
+Cheers
+Yash`
+
 export type TKeySound = "subtle" | "hard";
 export interface ITypewriterContext {
   keySound: TKeySound;
@@ -13,7 +26,7 @@ export interface ITypewriterContext {
 export const INITIAL_TYPEWRITER_STATE: ITypewriterContext = {
   keySound: "subtle",
   setKeySound: () => { },
-  content: '',
+  content: WELCOME_CONTENT,
   setContent: () => { },
   isTypearea: true,
   setIsTypearea: () => { }

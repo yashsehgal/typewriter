@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { INITIAL_TYPEWRITER_STATE, TypewriterContext } from "../contexts/typewriter-context"
+import { TypewriterContext } from "../contexts/typewriter-context"
 
 export function KeySoundSelect() {
   const { keySound, setKeySound } = useContext(TypewriterContext);
@@ -35,7 +35,7 @@ function TypewriterReset() {
       const resetAudio = new Audio('/sounds/typewriter-reset-bell.wav');
       resetAudio.volume = 0.4;
       resetAudio.play();
-      setContent(INITIAL_TYPEWRITER_STATE.content);
+      setContent('' as string);
       setIsTypearea(false);
       setTimeout(() => {
         setIsTypearea(true);
