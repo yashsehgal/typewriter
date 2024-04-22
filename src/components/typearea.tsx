@@ -20,7 +20,6 @@ export default function Typearea() {
 
   const autoResize = () => {
     if (textareaRef.current) {
-      playTypeSound();
       const textarea = textareaRef.current;
       textarea.style.height = 'auto';
       textarea.style.height = `${textarea.scrollHeight}px`;
@@ -50,6 +49,7 @@ export default function Typearea() {
           placeholder="Start typing your thoughts..."
           autoFocus
           onChange={autoResize}
+          onKeyDown={playTypeSound}
           value={content}
         />
       }
